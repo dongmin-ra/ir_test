@@ -29,6 +29,8 @@ jobs:
         pwd
         cd framework_test
         ls -al
+        git config --global user.email "test@test.com"
+        git config --global user.name "test_bot"
         git config --global url.https://api:${{ secrets.ACTION_TOKEN }}@github.com/.insteadOf https://github.com/
         git config --unset http.https://github.com/.extraheader
     - name: Subtree pull
