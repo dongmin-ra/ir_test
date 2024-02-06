@@ -26,8 +26,10 @@ jobs:
         ls -al
     - name: Git Config
       run: |
+        pwd
+        ls -al
         git config --global url.https://api:${{ secrets.ACTION_TOKEN }}@github.com/.insteadOf https://github.com/
-        git config --unset http.https://github.com/.extraheader
+        #git config --unset http.https://github.com/.extraheader
     - name: Subtree pull
       run: |
         git subtree pull --prefix ir https://github.com/dongmin-ra/ir_test.git master
