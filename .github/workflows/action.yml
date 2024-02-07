@@ -19,24 +19,19 @@ jobs:
         token: ${{ secrets.ACTION_TOKEN }}
         path: framework_test
         fetch-depth: 0
-    - name: change directory
-      run: |
-        ls -al
-        cd framework_test
-        ls -al
     - name: Git Config
       run: |
-        pwd
         cd framework_test
-        ls -al
         git config --global user.email "test@test.com"
         git config --global user.name "test_bot"
         git config --global url.https://api:${{ secrets.ACTION_TOKEN }}@github.com/.insteadOf https://github.com/
         git config --unset http.https://github.com/.extraheader
     - name: Subtree pull
       run: |
-        ls -al
         cd framework_test
         git subtree split --rejoin --prefix=ir
         git subtree pull --prefix ir https://github.com/dongmin-ra/ir_test.git master
+    - name: Git push
+      run: |
+        cd framework_test
         git push origin master
