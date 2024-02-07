@@ -37,4 +37,5 @@ jobs:
       run: |
         ls -al
         cd framework_test
+        git subtree split --rejoin --prefix=ir https://github.com/dongmin-ra/ir_test.git master
         git subtree pull --prefix ir https://github.com/dongmin-ra/ir_test.git master
