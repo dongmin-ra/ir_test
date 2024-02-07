@@ -39,3 +39,4 @@ jobs:
         cd framework_test
         git subtree split --rejoin --prefix=ir
         git subtree pull --prefix ir https://github.com/dongmin-ra/ir_test.git master
+        git push origin master
