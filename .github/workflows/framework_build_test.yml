@@ -31,6 +31,6 @@ jobs:
         git subtree split --rejoin --prefix=ir
         git subtree pull --prefix ir https://github.com/dongmin-ra/ir_test.git master
   framework_build_test:
-      uses: dongmin-ra/framework_test/.github/workflows/build_test.yml
+      uses: dongmin-ra/framework_test/.github/workflows/build_test.yml@master
       with: 
         path: ${GITHUB_WORKSPACE}/framework_test
