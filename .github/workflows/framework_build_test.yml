@@ -32,5 +32,5 @@ jobs:
         git subtree pull --prefix ir https://github.com/dongmin-ra/ir_test.git master
     - name: Use framework build test
       uses: ./framework_test/.github/workflows/build_test.yml
-      env: 
-        FRAMEWORK_PATH: ${GITHUB_WORKSPACE}/framework_test
+      with: 
+        path: ${GITHUB_WORKSPACE}/framework_test
