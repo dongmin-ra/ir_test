@@ -33,5 +33,4 @@ jobs:
   framework_build_test:
       uses: dongmin-ra/framework_test/.github/workflows/build_test.yml@master
       with: 
-        path: ${GITHUB_WORKSPACE}/framework_test
-
+        ir_branch: ${{ github.head_ref }}
