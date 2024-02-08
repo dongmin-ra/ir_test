@@ -1,15 +1,14 @@
-name: Push to framework
+name: framework build test
 
 on:
   pull_request:
-    types:
-      - closed
-    branches:
-      - master
+    types: [opened, synchronize, reopened]
+
+  push:
+    branches: master
 
 jobs:
-  push_to_framework:
-    if: github.event.pull_request.merged == true
+  framework_build_test:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository
@@ -31,7 +30,7 @@ jobs:
         cd framework_test
         git subtree split --rejoin --prefix=ir
         git subtree pull --prefix ir https://github.com/dongmin-ra/ir_test.git master
-    - name: Git push
-      run: |
-        cd framework_test
-        git push origin master
+    - name: Use framework build test
+      uses: ./framework_test/.github/workflows/build_test.yml
+      env: 
+        FRAMEWORK_PATH: ${GITHUB_WORKSPACE}/framework_test
