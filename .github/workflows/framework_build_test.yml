@@ -8,7 +8,7 @@ on:
     branches: master
 
 jobs:
-  framework_build_test:
+  framework_setup:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository
@@ -30,7 +30,7 @@ jobs:
         cd framework_test
         git subtree split --rejoin --prefix=ir
         git subtree pull --prefix ir https://github.com/dongmin-ra/ir_test.git master
-    - name: Use framework build test
-      uses: ./framework_test/.github/actions/build_test
+  framework_build_test:
+      uses: ./framework_test/.github/workflows/build_test.yml
       with: 
         path: ${GITHUB_WORKSPACE}/framework_test
