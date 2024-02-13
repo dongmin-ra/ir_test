@@ -4,9 +4,6 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
-  push:
-    branches: master
-
 jobs:
   framework_build_test:
       uses: dongmin-ra/framework_test/.github/workflows/build_test.yml@master
