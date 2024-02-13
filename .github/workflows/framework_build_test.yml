@@ -8,28 +8,6 @@ on:
     branches: master
 
 jobs:
-  framework_setup:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4 
-      with:
-        repository: dongmin-ra/framework_test
-        token: ${{ secrets.ACTION_TOKEN }}
-        path: framework_test
-        fetch-depth: 0
-    - name: Git Config
-      run: |
-        cd framework_test
-        git config --global user.email "test@test.com"
-        git config --global user.name "test_bot"
-        git config --global url.https://api:${{ secrets.ACTION_TOKEN }}@github.com/.insteadOf https://github.com/
-        git config --unset http.https://github.com/.extraheader
-    - name: Subtree pull
-      run: |
-        cd framework_test
-        git subtree split --rejoin --prefix=ir
-        git subtree pull --prefix ir https://github.com/dongmin-ra/ir_test.git master
   framework_build_test:
       uses: dongmin-ra/framework_test/.github/workflows/build_test.yml@master
       with: 
